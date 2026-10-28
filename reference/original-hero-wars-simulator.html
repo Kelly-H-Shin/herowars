@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Wars: Alliance - Team Builder & Synergy Simulator (Beta v1.0)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#f59e0b',
+              red: '#ef4444',
+              blue: '#3b82f6',
+              purple: '#8b5cf6',
+              cyan: '#06b6d4',
+              emerald: '#10b981',
+              dark: '#090d16',
+              card: '#131c2e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+
+    .hero-card {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hero-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.6);
+    }
+
+    .glow-gold {
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+    }
+    .glow-blue {
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    }
+    .glow-red {
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+    }
+
+    .bg-gradient-radial {
+      background: radial-gradient(circle at 50% 0%, #1e293b 0%, #090d16 100%);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans bg-gradient-radial select-none pb-16">
+
+  <!-- Header Navigation -->
+  <header class="border-b border-slate-800/80 bg-slate-900/90 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 via-amber-500 to-amber-300 flex items-center justify-center shadow-lg shadow-amber-500/20 font-black text-xl text-slate-950">
+          HW
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold text-slate-100 tracking-wide flex items-center gap-2">
+            히어로즈 워: 얼라이언스 <span class="text-xs bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded border border-amber-500/30 font-semibold">Beta v1.0</span>
+          </h1>
+          <p class="text-xs text-slate-400">전설 유물(Relic) & 스톤스킨(Stone Skin) 실시간 덱 시뮬레이터</p>
+        </div>
+      </div>
+
+      <!-- Presets Quick Bar -->
+      <div class="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
+        <span class="text-xs text-slate-400 font-medium whitespace-nowrap flex items-center gap-1 mr-1">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i> 추천 메타 덱:
+        </span>
+        <button onclick="loadPreset('mystery_folio')" class="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-pink-300 rounded-lg border border-pink-500/30 transition whitespace-nowrap">
+          신비 폴리오 덱
+        </button>
+        <button onclick="loadPreset('progress')" class="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-cyan-300 rounded-lg border border-cyan-500/30 transition whitespace-nowrap">
+          진보 쉴드 덱
+        </button>
+        <button onclick="loadPreset('honor')" class="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-lg border border-amber-500/30 transition whitespace-nowrap">
+          명예 치명타 덱
+        </button>
+        <button onclick="loadPreset('chaos')" class="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-red-300 rounded-lg border border-red-500/30 transition whitespace-nowrap">
+          혼돈 연소 덱
+        </button>
+        <button onclick="loadPreset('eternity')" class="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-purple-300 rounded-lg border border-purple-500/30 transition whitespace-nowrap">
+          영원 언데드 덱
+        </button>
+        <button onclick="loadPreset('nature')" class="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-emerald-300 rounded-lg border border-emerald-500/30 transition whitespace-nowrap">
+          자연 룬 덱
+        </button>
+        <button onclick="resetAllTeams()" class="px-2.5 py-1 text-xs bg-slate-800 hover:bg-red-900/50 text-red-400 rounded-lg border border-red-500/20 transition whitespace-nowrap flex items-center gap-1 ml-1">
+          <i data-lucide="rotate-ccw" class="w-3 h-3"></i> 초기화
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+
+    <!-- Active Teams Section (My Team VS Enemy Team) -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+      <!-- My Team Panel -->
+      <div class="lg:col-span-5 bg-slate-900/90 rounded-2xl p-4 border border-blue-500/30 shadow-xl relative flex flex-col justify-between">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-500 rounded-t-2xl"></div>
+
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></span>
+              <h2 class="font-bold text-slate-100 text-sm sm:text-base flex items-center gap-2">
+                🛡️ 내 팀 구성 (아군)
+                <span id="my-team-count" class="text-xs bg-blue-950 text-blue-300 px-2 py-0.5 rounded-full border border-blue-500/30 font-semibold">0/5</span>
+              </h2>
+            </div>
+            <button id="target-my-btn" onclick="setSelectTarget('my')" class="text-xs px-3 py-1 rounded-lg font-medium transition flex items-center gap-1 border bg-blue-600 text-white border-blue-400 shadow-sm">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> 선택 중
+            </button>
+          </div>
+
+          <!-- 5 Hero Slots Grid -->
+          <div id="my-team-slots" class="grid grid-cols-5 gap-2 my-2">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Faction Badges Summary -->
+        <div id="my-faction-summary" class="mt-3 pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 min-h-[30px] text-xs">
+          <span class="text-slate-500 italic text-[11px]">영웅을 배치하면 진영 시너지 정보가 표시됩니다.</span>
+        </div>
+      </div>
+
+      <!-- VS Indicator & Trigger -->
+      <div class="lg:col-span-2 flex flex-col items-center justify-center py-2 lg:py-0">
+        <div class="w-14 h-14 rounded-full bg-slate-900 border-2 border-amber-500/50 flex items-center justify-center font-black text-amber-400 text-xl shadow-lg glow-gold my-auto">
+          VS
+        </div>
+        <button onclick="runSimulation()" class="mt-3 px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-xl text-xs shadow-lg shadow-amber-500/20 active:scale-95 transition flex items-center gap-1.5">
+          <i data-lucide="play" class="w-4 h-4 fill-slate-950"></i> 시뮬레이션 연산
+        </button>
+      </div>
+
+      <!-- Enemy Team Panel -->
+      <div class="lg:col-span-5 bg-slate-900/90 rounded-2xl p-4 border border-red-500/30 shadow-xl relative flex flex-col justify-between">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-orange-400 to-red-500 rounded-t-2xl"></div>
+
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+              <h2 class="font-bold text-slate-100 text-sm sm:text-base flex items-center gap-2">
+                🗡️ 상대 팀 구성 (적군)
+                <span id="enemy-team-count" class="text-xs bg-red-950 text-red-300 px-2 py-0.5 rounded-full border border-red-500/30 font-semibold">0/5</span>
+              </h2>
+            </div>
+            <button id="target-enemy-btn" onclick="setSelectTarget('enemy')" class="text-xs px-3 py-1 rounded-lg font-medium transition flex items-center gap-1 border bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600">
+              선택하기
+            </button>
+          </div>
+
+          <!-- 5 Hero Slots Grid -->
+          <div id="enemy-team-slots" class="grid grid-cols-5 gap-2 my-2">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Faction Badges Summary -->
+        <div id="enemy-faction-summary" class="mt-3 pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 min-h-[30px] text-xs">
+          <span class="text-slate-500 italic text-[11px]">상대 영웅을 세팅해 예상 카운터를 대조하세요.</span>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- Live Analytics Dashboard -->
+    <section class="bg-slate-900/95 border border-slate-800 rounded-2xl p-5 shadow-2xl relative overflow-hidden">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between border-b border-slate-800 pb-4 mb-4 gap-4">
+        <div>
+          <h2 class="text-base font-bold text-slate-100 flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-amber-400"></i> 전투 승률 및 수치 연산 분석 (Beta)
+          </h2>
+          <p class="text-xs text-slate-400">유물 레벨, 스톤스킨 스탯 증가분 및 관통 vs 방어 감소율을 고려한 실시간 대시보드</p>
+        </div>
+
+        <!-- Win Rate Circle Badge -->
+        <div class="flex items-center gap-4 bg-slate-950 px-4 py-2 rounded-xl border border-slate-800 shadow-inner">
+          <div class="text-right">
+            <div class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">예상 승률 (Win Rate)</div>
+            <div id="win-rate-text" class="text-2xl font-black text-amber-400">50%</div>
+          </div>
+          <div class="w-12 h-12 rounded-full border-4 border-slate-800 flex items-center justify-center bg-slate-900" id="win-rate-icon">
+            <i data-lucide="swords" class="w-5 h-5 text-amber-400"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Metric Bars Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <!-- Metric 1: Synergy Score -->
+        <div class="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i> 진영 시너지
+            </span>
+            <span id="score-synergy" class="text-sm font-bold text-cyan-400">0 Pts</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div id="bar-synergy" class="bg-cyan-500 h-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+          <p id="desc-synergy" class="text-[10px] text-slate-400 mt-2">동일 진영 공명 및 직업 조합 수치</p>
+        </div>
+
+        <!-- Metric 2: Relic & Skin Power -->
+        <div class="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+              <i data-lucide="shield" class="w-4 h-4 text-purple-400"></i> 유물/스킨 스펙
+            </span>
+            <span id="score-relic" class="text-sm font-bold text-purple-400">0 Pts</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div id="bar-relic" class="bg-purple-500 h-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+          <p id="desc-relic" class="text-[10px] text-slate-400 mt-2">전설 유물 및 스톤스킨 보정 수치</p>
+        </div>
+
+        <!-- Metric 3: Counter Advantage -->
+        <div class="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+              <i data-lucide="zap" class="w-4 h-4 text-amber-400"></i> 상성 카운터
+            </span>
+            <span id="score-counter" class="text-sm font-bold text-amber-400">0 Pts</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div id="bar-counter" class="bg-amber-500 h-full transition-all duration-500" style="width: 50%"></div>
+          </div>
+          <p id="desc-counter" class="text-[10px] text-slate-400 mt-2">적 기믹 하드 카운터 판정 점수</p>
+        </div>
+
+        <!-- Metric 4: Penetration vs Defense -->
+        <div class="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+              <i data-lucide="target" class="w-4 h-4 text-emerald-400"></i> 관통 무력화율
+            </span>
+            <span id="score-pen" class="text-sm font-bold text-emerald-400">0%</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div id="bar-pen" class="bg-emerald-500 h-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+          <p id="desc-pen" class="text-[10px] text-slate-400 mt-2">방어력 무력화 수치 상쇄율</p>
+        </div>
+      </div>
+
+      <!-- Analysis Insights Logs -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <!-- Synergy & Relic Triggers Log -->
+        <div class="bg-slate-950/80 rounded-xl p-3.5 border border-slate-800">
+          <h3 class="text-xs font-bold text-cyan-300 mb-2 flex items-center gap-1.5">
+            <i data-lucide="check-circle" class="w-4 h-4"></i> 감지된 진영 시너지 & 유물 패시브
+          </h3>
+          <ul id="log-synergy-list" class="space-y-1.5 text-xs text-slate-300 max-h-40 overflow-y-auto pr-1">
+            <li class="text-slate-500 italic">영웅을 선택하면 시너지 콤보가 여기에 표시됩니다.</li>
+          </ul>
+        </div>
+
+        <!-- Counter & Risk Log -->
+        <div class="bg-slate-950/80 rounded-xl p-3.5 border border-slate-800">
+          <h3 class="text-xs font-bold text-amber-300 mb-2 flex items-center gap-1.5">
+            <i data-lucide="shield-alert" class="w-4 h-4"></i> 하드 카운터 상성 & 리스크 분석
+          </h3>
+          <ul id="log-counter-list" class="space-y-1.5 text-xs text-slate-300 max-h-40 overflow-y-auto pr-1">
+            <li class="text-slate-500 italic">상대 덱 대조 시 발생하는 하드 카운터 및 주의 요소가 출력됩니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Hero Selection Board & Filters -->
+    <section class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-5 border-b border-slate-800 pb-4">
+        <div>
+          <h2 class="text-base font-bold text-slate-100 flex items-center gap-2">
+            <i data-lucide="users" class="w-5 h-5 text-blue-400"></i> 전체 영웅 데이터베이스 (40명+)
+          </h2>
+          <p class="text-xs text-slate-400">원하는 영웅 카드를 클릭하여 현재 지정된 팀(아군/적군)에 배치합니다.</p>
+        </div>
+
+        <!-- Search Input -->
+        <div class="relative w-full md:w-64">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="search-input" oninput="renderHeroGrid()" placeholder="영웅 이름 검색 (예: 폴리오)..." class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-4 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-500 transition placeholder:text-slate-500" />
+        </div>
+      </div>
+
+      <!-- Filters: Role & Faction -->
+      <div class="space-y-3 mb-5">
+        <!-- Role Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="text-xs text-slate-400 font-semibold w-12">직업:</span>
+          <button onclick="setRoleFilter('ALL')" class="role-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-700 bg-amber-500 text-slate-950 font-bold">전체</button>
+          <button onclick="setRoleFilter('Tank')" class="role-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800">탱커</button>
+          <button onclick="setRoleFilter('Warrior')" class="role-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800">전사</button>
+          <button onclick="setRoleFilter('Marksman')" class="role-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800">사수</button>
+          <button onclick="setRoleFilter('Mage')" class="role-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800">마법사</button>
+          <button onclick="setRoleFilter('Support')" class="role-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800">서포터</button>
+          <button onclick="setRoleFilter('Healer')" class="role-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800">힐러</button>
+        </div>
+
+        <!-- Faction Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="text-xs text-slate-400 font-semibold w-12">진영:</span>
+          <button onclick="setFactionFilter('ALL')" class="faction-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-700 bg-amber-500 text-slate-950 font-bold">전체</button>
+          <button onclick="setFactionFilter('Progress')" class="faction-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-cyan-400 hover:bg-slate-800">진보</button>
+          <button onclick="setFactionFilter('Chaos')" class="faction-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-red-400 hover:bg-slate-800">혼돈</button>
+          <button onclick="setFactionFilter('Nature')" class="faction-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-emerald-400 hover:bg-slate-800">자연</button>
+          <button onclick="setFactionFilter('Honor')" class="faction-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-amber-400 hover:bg-slate-800">명예</button>
+          <button onclick="setFactionFilter('Eternity')" class="faction-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-purple-400 hover:bg-slate-800">영원</button>
+          <button onclick="setFactionFilter('Mystery')" class="faction-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-pink-400 hover:bg-slate-800">신비</button>
+        </div>
+      </div>
+
+      <!-- Hero Grid Display -->
+      <div id="hero-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 min-h-[280px]">
+        <!-- Hero Cards rendered dynamically via JS -->
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- Modal: Hero Details & Relic Spec Inspector -->
+  <div id="hero-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
+      <div id="modal-content" class="p-6 relative">
+        <button onclick="closeHeroModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg bg-slate-800/50">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div id="modal-hero-details">
+          <!-- Dynamic details -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Application Core Script -->
+  <script>
+    // ==========================================
+    // 1. COMPLETE DATABASE OF ALL HERO WARS ALLIANCE HEROES
+    // ==========================================
+    const HEROES_DB = [
+      // --- WAY OF MYSTERY (신비의 길) ---
+      {
+        id: 'folio',
+        name: '폴리오',
+        role: 'Mage',
+        faction: 'Mystery',
+        avatar: '📖',
+        color: '#ec4899',
+        stats: { hp: 835000, armor: 21000, magicDef: 40000, physAtk: 0, magicAtk: 208000, physPen: 0, magicPen: 48000, mainStat: 14500 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Magic_DPS', 'Mystery', 'Control', 'Energy_Gen', 'Grouping'],
+        desc: '전설 유물과 지능 차이 데미지 증폭으로 적을 묶고 광역 폭딜을 꽂는 신비 메인 딜러.',
+        relicSkills: { lvl1: 'Echo Chant (지속 마법 피해 + 치명타 15%)', lvl10: 'Inkblot (궁극기 폭발 피해 계수 증폭)', lvl20: 'Ink Copy (분신 생존력 및 흡수 증폭)', lvl30: 'Know-It-All (지능 낮은 적 10% 추가 폭딜)' },
+        counters: { hardAgainst: ['kayla', 'luther', 'yasmine'], vulnerableTo: ['isaac', 'cornelius'] }
+      },
+      {
+        id: 'celeste',
+        name: '셀레스티',
+        role: 'Healer',
+        faction: 'Mystery',
+        avatar: '☯️',
+        color: '#ec4899',
+        stats: { hp: 610000, armor: 13000, magicDef: 29000, physAtk: 0, magicAtk: 198000, physPen: 0, magicPen: 28000, mainStat: 13800 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Mystery', 'Anti_Heal', 'Cleanse', 'Healer'],
+        desc: '빛과 어둠 폼을 오가며 아군을 대량 치유하고 적의 힐을 피해주사로 전환.',
+        relicSkills: { lvl1: '어둠 저주 저동 전파', lvl10: '치유 차단 비율 100%', lvl20: '정화 쿨타임 -30%', lvl30: '빛 폼 힐량 2배' },
+        counters: { hardAgainst: ['Healer', 'mush_shroom', 'aidan', 'martha'], vulnerableTo: ['corvus'] }
+      },
+      {
+        id: 'jorgen',
+        name: '요르겐',
+        role: 'Support',
+        faction: 'Mystery',
+        avatar: '🔮',
+        color: '#ec4899',
+        stats: { hp: 890000, armor: 26000, magicDef: 23000, physAtk: 0, magicAtk: 140000, physPen: 0, magicPen: 0, mainStat: 12000 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Mystery', 'Energy_Denial', 'Leper', 'Shield'],
+        desc: '상대 덱의 에너지 수급을 완전히 금지시키고 후열로 피해를 낙병 전송.',
+        relicSkills: { lvl1: '에너지 동결 주술', lvl10: '에너지 봉인 +2초', lvl20: '낙병 피해 타겟 확장', lvl30: '쉴드 흡수량 강화' },
+        counters: { hardAgainst: ['energy_reliant_dps'], vulnerableTo: ['sebastian'] }
+      },
+      {
+        id: 'satori',
+        name: '사토리',
+        role: 'Mage',
+        faction: 'Mystery',
+        avatar: '🦊',
+        color: '#ec4899',
+        stats: { hp: 640000, armor: 18000, magicDef: 28000, physAtk: 0, magicAtk: 205000, physPen: 0, magicPen: 22000, mainStat: 14100 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Magic_DPS', 'Mystery', 'Fox_Fire', 'Steal_Intel'],
+        desc: '여우불 표식을 중첩시켜 보너스 에너지를 얻는 적을 순식간에 기폭 파괴.',
+        relicSkills: { lvl1: '여우령 연쇄', lvl10: '에너지 영웅 추가 표식', lvl20: '지능 강탈 증가', lvl30: '여우불 기폭 피해 2배' },
+        counters: { hardAgainst: ['jorgen', 'orion', 'judge'], vulnerableTo: ['celeste', 'nebula'] }
+      },
+      {
+        id: 'lian',
+        name: '리안',
+        role: 'Support',
+        faction: 'Mystery',
+        avatar: '🪕',
+        color: '#ec4899',
+        stats: { hp: 710000, armor: 20000, magicDef: 27000, physAtk: 0, magicAtk: 165000, physPen: 0, magicPen: 18000, mainStat: 12500 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Mystery', 'Charming_Sleep', 'Counter_AoE'],
+        desc: '광역 공격을 하는 적을 타깃해 즉시 매혹(유혹 수면)으로 반격 잠재움.',
+        relicSkills: { lvl1: '매혹의 멜로디', lvl10: '수면 지속시간 +2초', lvl20: '수면 피격 데미지 반쇄', lvl30: '매혹 시 적 에너지 차감' },
+        counters: { hardAgainst: ['ginger', 'keira', 'aoe_dps'], vulnerableTo: ['sebastian'] }
+      },
+      {
+        id: 'amira',
+        name: '아미라',
+        role: 'Support',
+        faction: 'Mystery',
+        avatar: '🧞‍♀️',
+        color: '#ec4899',
+        stats: { hp: 760000, armor: 22000, magicDef: 29000, physAtk: 0, magicAtk: 188000, physPen: 0, magicPen: 21000, mainStat: 13200 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Mystery', 'Gold_Trap', 'Anti_Crit'],
+        desc: '주 스탯 기반 황금 항아리 저주로 적의 치명타와 물리 폭딜을 무력화.',
+        relicSkills: { lvl1: '황금 폭풍 유도', lvl10: '저주 지속 +3초', lvl20: '주 스탯 비례 추가 딜', lvl30: '항아리 폭발 치명타 봉인' },
+        counters: { hardAgainst: ['julius', 'ginger', 'artemis'], vulnerableTo: ['cornelius'] }
+      },
+      {
+        id: 'cornelius',
+        name: '코르넬리우스',
+        role: 'Support',
+        faction: 'Mystery',
+        avatar: '📜',
+        color: '#ec4899',
+        stats: { hp: 690000, armor: 17000, magicDef: 31000, physAtk: 0, magicAtk: 172000, physPen: 0, magicPen: 24000, mainStat: 13500 },
+        artifactWeapon: 'Magic_Def_Buff',
+        tags: ['Mystery', 'Anti_Mage', 'Intel_Crush'],
+        desc: '상대 지능이 가장 높은 마법사 적에게 거대한 암석을 떨어뜨려 즉사 타격.',
+        relicSkills: { lvl1: '지원의 암석 강타', lvl10: '지능 비례 피해 계수 +50%', lvl20: '마법 방어막 부여', lvl30: '타깃 공격력 50% 삭감' },
+        counters: { hardAgainst: ['folio', 'satori', 'peppy', 'orion'], vulnerableTo: ['corvus'] }
+      },
+
+      // --- WAY OF PROGRESS (진보의 길) ---
+      {
+        id: 'julius',
+        name: '율리우스',
+        role: 'Tank',
+        faction: 'Progress',
+        avatar: '🛡️',
+        color: '#06b6d4',
+        stats: { hp: 980000, armor: 32000, magicDef: 24000, physAtk: 42000, magicAtk: 0, physPen: 0, magicPen: 0, mainStat: 15100 },
+        artifactWeapon: 'Armor_Buff',
+        tags: ['Shield', 'Progress', 'Cleanse', 'Buff_Speed'],
+        desc: '고유 복제 보호막과 정화, 공속 버프를 제공하는 진보 전열 탱커.',
+        relicSkills: { lvl1: '냥이의 감시', lvl10: '쉴드 내구도 +35%', lvl20: '정화 주기 단축', lvl30: '아군 이동/공격 속도 +20%' },
+        counters: { hardAgainst: ['debuff_heavy'], vulnerableTo: ['iris', 'amira'] }
+      },
+      {
+        id: 'judge',
+        name: '저지',
+        role: 'Support',
+        faction: 'Progress',
+        avatar: '⚡',
+        color: '#06b6d4',
+        stats: { hp: 650000, armor: 16000, magicDef: 26000, physAtk: 0, magicAtk: 185000, physPen: 0, magicPen: 22000, mainStat: 13000 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Shield', 'Progress', 'Stun', 'Protection'],
+        desc: '강력한 전기 무적 보호막과 기절 광선으로 진보 덱 라인을 탄탄하게 수호.',
+        relicSkills: { lvl1: '과전류 유도', lvl10: '보호막 흡수량 +40%', lvl20: '스턴 시간 +1.5초', lvl30: '광역 전기 충격파 발동' },
+        counters: { hardAgainst: ['burst_phys'], vulnerableTo: ['satori'] }
+      },
+      {
+        id: 'isaac',
+        name: '아이작',
+        role: 'Support',
+        faction: 'Progress',
+        avatar: '⚙️',
+        color: '#06b6d4',
+        stats: { hp: 720000, armor: 22000, magicDef: 34000, physAtk: 155000, magicAtk: 0, physPen: 24000, magicPen: 0, mainStat: 14000 },
+        artifactWeapon: 'Phys_Pen_Buff',
+        tags: ['Anti_Magic', 'Progress', 'Buff_PhysPen', 'Silence'],
+        desc: '상대 마법 피해를 드론 에너지로 흡수하여 드론 쉴드와 침묵을 뿜어내는 하드 카운터.',
+        relicSkills: { lvl1: '고주파 충격 드론', lvl10: '마법 흡수율 +50%', lvl20: '침묵 지속 +2초', lvl30: '팀 전원 물리관통 버프' },
+        counters: { hardAgainst: ['Magic_DPS', 'orion', 'celeste', 'peppy', 'folio'], vulnerableTo: ['kayla', 'corvus'] }
+      },
+      {
+        id: 'ginger',
+        name: '진저',
+        role: 'Marksman',
+        faction: 'Progress',
+        avatar: '🔫',
+        color: '#06b6d4',
+        stats: { hp: 580000, armor: 15000, magicDef: 14000, physAtk: 195000, magicAtk: 0, physPen: 32000, magicPen: 0, mainStat: 14800 },
+        artifactWeapon: 'Phys_Atk_Buff',
+        tags: ['Physical_DPS', 'Progress', 'AoE'],
+        desc: '기관총 연사 난사로 전열과 중열을 가리지 않고 휩쓰는 광역 물리 딜러.',
+        relicSkills: { lvl1: '과열 연사 탄환', lvl10: '사격 피해 +30%', lvl20: '재장전 쿨타임 -20%', lvl30: '방어력 관통 100% 탄환' },
+        counters: { hardAgainst: ['squishy_backline'], vulnerableTo: ['helios', 'lian'] }
+      },
+      {
+        id: 'astrid',
+        name: '아스트리드 & 루카스',
+        role: 'Marksman',
+        faction: 'Progress',
+        avatar: '🐆',
+        color: '#06b6d4',
+        stats: { hp: 690000, armor: 19000, magicDef: 16000, physAtk: 180000, magicAtk: 0, physPen: 26000, magicPen: 0, mainStat: 13900 },
+        artifactWeapon: 'Phys_Atk_Buff',
+        tags: ['Physical_DPS', 'Progress', 'Pet_Summon', 'Stun'],
+        desc: '루카스를 야수로 변신시켜 적 진형을 할퀴고 기절을 거는 물리 사수.',
+        relicSkills: { lvl1: '야수 광폭화', lvl10: '변신 시간 +4초', lvl20: '루카스 방어력 2배', lvl30: '분노 폭발 딜' },
+        counters: { hardAgainst: ['single_target_tanks'], vulnerableTo: ['corvus'] }
+      },
+      {
+        id: 'orion',
+        name: '오리온',
+        role: 'Mage',
+        faction: 'Progress',
+        avatar: '🚀',
+        color: '#06b6d4',
+        stats: { hp: 540000, armor: 13000, magicDef: 22000, physAtk: 0, magicAtk: 210000, physPen: 0, magicPen: 38000, mainStat: 14700 },
+        artifactWeapon: 'Magic_Pen_Buff',
+        tags: ['Magic_DPS', 'Progress', 'Fast_Energy'],
+        desc: '초고속 에너지 수급으로 미사일 폭격을 쉴 새 없이 날리는 마법 딜러.',
+        relicSkills: { lvl1: '전열 미사일 폭격', lvl10: '에너지 수급 +25%', lvl20: '마법 관통 버프 중첩', lvl30: '초고속 탄막 발사' },
+        counters: { hardAgainst: ['low_mdef_tanks'], vulnerableTo: ['isaac', 'rufus'] }
+      },
+
+      // --- WAY OF CHAOS (혼돈의 길) ---
+      {
+        id: 'astaroth',
+        name: '아스타로트',
+        role: 'Tank',
+        faction: 'Chaos',
+        avatar: '😈',
+        color: '#ef4444',
+        stats: { hp: 1050000, armor: 33000, magicDef: 27000, physAtk: 45000, magicAtk: 0, physPen: 0, magicPen: 0, mainStat: 15500 },
+        artifactWeapon: 'Armor_Buff',
+        tags: ['Resurrect', 'Chaos', 'Shield', 'Damage_Share'],
+        desc: '사망한 아군 1회 부활, 물리 방어막, 데미지 분산을 갖춘 표준 탱커.',
+        relicSkills: { lvl1: '지옥 불꽃 장막', lvl10: '부활 대상 체력 100%', lvl20: '데미지 공유 40%', lvl30: '피격 시 적 에너지를 태움' },
+        counters: { hardAgainst: ['single_burst'], vulnerableTo: ['celeste', 'morrigan'] }
+      },
+      {
+        id: 'kayla',
+        name: '케일라',
+        role: 'Warrior',
+        faction: 'Chaos',
+        avatar: '🗡️',
+        color: '#ef4444',
+        stats: { hp: 740000, armor: 24000, magicDef: 19000, physAtk: 185000, magicAtk: 0, physPen: 28000, magicPen: 0, mainStat: 14200 },
+        artifactWeapon: 'Phys_Pen_Buff',
+        tags: ['Physical_DPS', 'Chaos', 'Burn', 'Backline_Diver'],
+        desc: '적 후열로 돌진하여 지속 화염 연소 피해로 사수와 힐러를 도륙.',
+        relicSkills: { lvl1: '화염 날개 급습', lvl10: '연소 피해 +40%', lvl20: '침투 시 아머 버프', lvl30: '치명타 화염 폭발' },
+        counters: { hardAgainst: ['squishy_backline', 'isaac'], vulnerableTo: ['corvus', 'folio'] }
+      },
+      {
+        id: 'aidan',
+        name: '에이단',
+        role: 'Healer',
+        faction: 'Chaos',
+        avatar: '🔥',
+        color: '#ef4444',
+        stats: { hp: 810000, armor: 17000, magicDef: 26000, physAtk: 0, magicAtk: 160000, physPen: 0, magicPen: 0, mainStat: 13100 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Healer', 'Chaos', 'MaxHP_Buff', 'Link'],
+        desc: '케일라와의 영혼 결속 및 팀 전체 최대 체력을 크게 올려주는 혼돈 힐러.',
+        relicSkills: { lvl1: '영혼 결속 보호막', lvl10: '최대 체력 증가 +30%', lvl20: '치유 광역 전파', lvl30: '사망 시 팀 전체 대량 치유' },
+        counters: { hardAgainst: ['sustained_damage'], vulnerableTo: ['cleaver'] }
+      },
+      {
+        id: 'cleaver',
+        name: '클리버',
+        role: 'Tank',
+        faction: 'Chaos',
+        avatar: '🥩',
+        color: '#ef4444',
+        stats: { hp: 1200000, armor: 35000, magicDef: 22000, physAtk: 50000, magicAtk: 0, physPen: 0, magicPen: 0, mainStat: 16000 },
+        artifactWeapon: 'Armor_Buff',
+        tags: ['Chaos', 'Hook', 'Stun', 'Pure_Damage'],
+        desc: '적 최후열 영웅을 쇠사슬로 끌고 와 전열에서 기절시키고 짓이김.',
+        relicSkills: { lvl1: '사슬 끌기 강화', lvl10: '끌려온 적 스턴 3초', lvl20: '자체 흡혈 보정', lvl30: '고정 순수 피해 폭격' },
+        counters: { hardAgainst: ['backline_healer'], vulnerableTo: ['iris'] }
+      },
+      {
+        id: 'peppy',
+        name: '페피',
+        role: 'Mage',
+        faction: 'Chaos',
+        avatar: '🃏',
+        color: '#ef4444',
+        stats: { hp: 560000, armor: 14000, magicDef: 21000, physAtk: 0, magicAtk: 190000, physPen: 0, magicPen: 25000, mainStat: 13400 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Magic_DPS', 'Chaos', 'Stun', 'Trickster'],
+        desc: '클리버와의 시너지 및 반사 보호막으로 적 공격 시 역스턴을 거는 마법사.',
+        relicSkills: { lvl1: '장난감 번개 분사', lvl10: '반사 쉴드 부여', lvl20: '기절 확률 100%', lvl30: '마법 관통 폭증' },
+        counters: { hardAgainst: ['single_target_tanks'], vulnerableTo: ['isaac'] }
+      },
+
+      // --- WAY OF ETERNITY (영원의 길) ---
+      {
+        id: 'corvus',
+        name: '코르부스',
+        role: 'Tank',
+        faction: 'Eternity',
+        avatar: '👑',
+        color: '#a855f7',
+        stats: { hp: 1020000, armor: 34000, magicDef: 23000, physAtk: 48000, magicAtk: 0, physPen: 0, magicPen: 0, mainStat: 15300 },
+        artifactWeapon: 'Armor_Buff',
+        tags: ['Altar_Counter', 'Eternity', 'Buff_Armor'],
+        desc: '영혼 제단을 세워 다단히트 및 광역 피해를 주는 적 딜러에게 즉시 반사 딜.',
+        relicSkills: { lvl1: '영혼 제단 내구도', lvl10: '제단 반사 데미지 +50%', lvl20: '영원 아군 방어력 버프', lvl30: '제단 체력 지속 회복' },
+        counters: { hardAgainst: ['kayla', 'ginger', 'yasmine', 'orion', 'keira'], vulnerableTo: ['iris', 'phobos'] }
+      },
+      {
+        id: 'morrigan',
+        name: '모리간',
+        role: 'Healer',
+        faction: 'Eternity',
+        avatar: '💀',
+        color: '#a855f7',
+        stats: { hp: 670000, armor: 16000, magicDef: 24000, physAtk: 0, magicAtk: 168000, physPen: 0, magicPen: 0, mainStat: 12900 },
+        artifactWeapon: 'Armor_Buff',
+        tags: ['Anti_Resurrect', 'Eternity', 'Skeleton_Summon', 'Healer'],
+        desc: '적 부활을 원천 봉쇄하고 해골 병사 소환으로 아군 치유 및 방어 수호.',
+        relicSkills: { lvl1: '해골 정예 병사', lvl10: '적 부활 완전 금지', lvl20: '해골 방어력 2배', lvl30: '영원 아군 물관/아머 버프' },
+        counters: { hardAgainst: ['astaroth', 'rufus'], vulnerableTo: ['satori'] }
+      },
+      {
+        id: 'iris',
+        name: '아이리스',
+        role: 'Mage',
+        faction: 'Eternity',
+        avatar: '👁️',
+        color: '#a855f7',
+        stats: { hp: 620000, armor: 14000, magicDef: 29000, physAtk: 0, magicAtk: 215000, physPen: 0, magicPen: 35000, mainStat: 14400 },
+        artifactWeapon: 'Magic_Pen_Buff',
+        tags: ['Magic_DPS', 'Eternity', 'Soul_Expose', 'Debuff_Counter'],
+        desc: '적 메인 탱커의 영혼을 강제 추출해 방어 무시 피해로 파괴하는 딜러.',
+        relicSkills: { lvl1: '영혼 적출 촉수', lvl10: '영혼 피해 계수 증폭', lvl20: '디버프 반사', lvl30: '방어력 100% 무력화 타격' },
+        counters: { hardAgainst: ['julius', 'cleaver', 'chabba', 'tank_heavy'], vulnerableTo: ['faceless', 'phobos'] }
+      },
+      {
+        id: 'octavia',
+        name: '옥타비아',
+        role: 'Support',
+        faction: 'Eternity',
+        avatar: '🪞',
+        color: '#a855f7',
+        stats: { hp: 730000, armor: 19000, magicDef: 27000, physAtk: 0, magicAtk: 175000, physPen: 0, magicPen: 20000, mainStat: 13600 },
+        artifactWeapon: 'Phys_Pen_Buff',
+        tags: ['Dodge_Buff', 'Eternity', 'Mirror_Damage'],
+        desc: '아군 전체 회피율을 올리고, 회피 성공 시 반격 및 에너지를 채워주는 핵심.',
+        relicSkills: { lvl1: '거울 환영 회피', lvl10: '아군 회피율 +30%', lvl20: '회피 성공 시 반격 타격', lvl30: '에너지 수급 폭발' },
+        counters: { hardAgainst: ['physical_heavy', 'dante', 'keira'], vulnerableTo: ['celeste', 'cornelius'] }
+      },
+      {
+        id: 'dante',
+        name: '단테',
+        role: 'Marksman',
+        faction: 'Eternity',
+        avatar: '🔱',
+        color: '#a855f7',
+        stats: { hp: 690000, armor: 21000, magicDef: 17000, physAtk: 182000, magicAtk: 0, physPen: 31000, magicPen: 0, mainStat: 14300 },
+        artifactWeapon: 'Phys_Pen_Buff',
+        tags: ['Physical_DPS', 'Eternity', 'Dodge_Buff', 'Knockback'],
+        desc: '창을 투척해 적을 밀쳐내고 아군 회피율을 비약적으로 올려주는 회피 사수.',
+        relicSkills: { lvl1: '영혼 창 밀쳐내기', lvl10: '밀쳐내기 거리 2배', lvl20: '회피 시 창 발사', lvl30: '적 아머 스탯 삭감' },
+        counters: { hardAgainst: ['physical_heavy'], vulnerableTo: ['octavia', 'corvus'] }
+      },
+      {
+        id: 'faceless',
+        name: '페이스리스',
+        role: 'Support',
+        faction: 'Eternity',
+        avatar: '🎭',
+        color: '#a855f7',
+        stats: { hp: 680000, armor: 16000, magicDef: 29000, physAtk: 0, magicAtk: 180000, physPen: 0, magicPen: 26000, mainStat: 13700 },
+        artifactWeapon: 'Magic_Pen_Buff',
+        tags: ['Eternity', 'Spell_Copy', 'Magic_Def_Buff', 'Displace'],
+        desc: '직전에 발동된 궁극기를 복사하여 위력을 1.2배로 쏘고 적 탱커를 뒤로 던짐.',
+        relicSkills: { lvl1: '궁극기 복사 강화', lvl10: '복사 스킬 위력 120%', lvl20: '적 던지기 스턴', lvl30: '팀 전원 마방 버프' },
+        counters: { hardAgainst: ['single_front_tank'], vulnerableTo: ['celeste'] }
+      },
+
+      // --- WAY OF NATURE (자연의 길) ---
+      {
+        id: 'alvanor',
+        name: '알바노어',
+        role: 'Support',
+        faction: 'Nature',
+        avatar: '🦌',
+        color: '#10b981',
+        stats: { hp: 860000, armor: 24000, magicDef: 26000, physAtk: 0, magicAtk: 170000, physPen: 0, magicPen: 18000, mainStat: 13500 },
+        artifactWeapon: 'Magic_Attack_Buff',
+        tags: ['Nature', 'Rune_Barrier', 'Healer', 'Earth_Protection'],
+        desc: '대지의 룬 보호막을 설치하여 자연 영웅들의 평타 흡혈 및 생존력을 극대화.',
+        relicSkills: { lvl1: '대지의 룬 방어막', lvl10: '보호막 흡수량 +40%', lvl20: '기본 공격 흡혈 30%', lvl30: '평타 피해 감쇄' },
+        counters: { hardAgainst: ['basic_attackers'], vulnerableTo: ['tristan'] }
+      },
+      {
+        id: 'mojo',
+        name: '모조',
+        role: 'Mage',
+        faction: 'Nature',
+        avatar: '🔮',
+        color: '#10b981',
+        stats: { hp: 570000, armor: 13000, magicDef: 24000, physAtk: 0, magicAtk: 200000, physPen: 0, magicPen: 32000, mainStat: 14000 },
+        artifactWeapon: 'Magic_Pen_Buff',
+        tags: ['Nature', 'Hex_Mark', 'Magic_DPS', 'Hydra_God'],
+        desc: '저주 표식을 각인해 아군 딜에 비례한 마법 도트 피해를 퍼붓는 히드라 필수 영웅.',
+        relicSkills: { lvl1: '저주 인장 각인', lvl10: '히드라/보스 피해 2배', lvl20: '도트 마법 피해 폭증', lvl30: '사망 후에도 저주 유지' },
+        counters: { hardAgainst: ['hydra', 'high_hp_targets'], vulnerableTo: ['isaac'] }
+      },
+      {
+        id: 'mush_shroom',
+        name: '머쉬룸&룸',
+        role: 'Tank',
+        faction: 'Nature',
+        avatar: '🍄',
+        color: '#10b981',
+        stats: { hp: 1100000, armor: 31000, magicDef: 27000, physAtk: 0, magicAtk: 135000, physPen: 0, magicPen: 0, mainStat: 15000 },
+        artifactWeapon: 'Armor_Buff',
+        tags: ['Nature', 'Shroom_Summon', 'Silence', 'Healer'],
+        desc: '버섯 포자를 자라나게 해 적을 침묵시키고 자연 영웅들을 치유하는 자생 탱커.',
+        relicSkills: { lvl1: '포자 버섯 번식', lvl10: '광역 침묵 포자', lvl20: '버섯 체력 2배', lvl30: '버섯 자폭 광역 딜' },
+        counters: { hardAgainst: ['skill_reliant'], vulnerableTo: ['celeste'] }
+      },
+      {
+        id: 'chabba',
+        name: '차바',
+        role: 'Tank',
+        faction: 'Nature',
+        avatar: '🐸',
+        color: '#10b981',
+        stats: { hp: 1150000, armor: 32000, magicDef: 21000, physAtk: 40000, magicAtk: 0, physPen: 0, magicPen: 0, mainStat: 15800 },
+        artifactWeapon: 'Armor_Buff',
+        tags: ['Nature', 'Swallow', 'Self_Heal'],
+        desc: '적 전열 탱커를 통째로 삼켜 몇 초간 전장에서 격리 파괴하는 식인 거구.',
+        relicSkills: { lvl1: '식욕 폭발 삼키기', lvl10: '삼킨 적 방어력 무력화', lvl20: '자체 흡혈률 50%', lvl30: '뱉을 때 광역 폭발 딜' },
+        counters: { hardAgainst: ['single_front_tank'], vulnerableTo: ['iris'] }
+      },
+
+      // --- WAY OF HONOR (명예의 길) ---
+      {
+        id: 'tristan',
+        name: '트리스탄',
+        role: 'Warrior',
+        faction: 'Honor',
+        avatar: '⚔️',
+        color: '#f59e0b',
+        stats: { hp: 820000, armor: 26000, magicDef: 18000, physAtk: 165000, magicAtk: 0, physPen: 36000, magicPen: 0, mainStat: 14100 },
+        artifactWeapon: 'Phys_Pen_Buff',
+        tags: ['Honor', 'Buff_PhysPen', 'Energy_Gain', 'Frontline_Burst'],
+        desc: '팀 전체에 아머 관통 버프를 부여하고 무한 궁극기로 전열을 베어버림.',
+        relicSkills: { lvl1: '성스러운 성검 강타', lvl10: '아군 물관 버프 +40%', lvl20: '에너지 수급 2배', lvl30: '전열 딜러 추가 피해' },
+        counters: { hardAgainst: ['high_armor_tanks'], vulnerableTo: ['helios'] }
+      },
+      {
+        id: 'sebastian',
+        name: '세바스찬',
+        role: 'Support',
+        faction: 'Honor',
+        avatar: '🎻',
+        color: '#f59e0b',
+        stats: { hp: 600000, armor: 15000, magicDef: 19000, physAtk: 140000, magicAtk: 0, physPen: 0, magicPen: 0, mainStat: 12800 },
+        artifactWeapon: 'Crit_Chance_Buff',
+        tags: ['Honor', 'Buff_Crit', 'Debuff_Immunity'],
+        desc: '치명타 폭딜을 극대화하고 적의 각종 디버프(스턴/침묵)를 완전 방어.',
+        relicSkills: { lvl1: '솔로 바이올린 앙상블', lvl10: '디버프 방어 +5회', lvl20: '치명타 추딜 폭증', lvl30: '전투 시작 쉴드' },
+        counters: { hardAgainst: ['jorgen', 'peppy', 'debuff_heavy'], vulnerableTo: ['satori'] }
+      },
+      {
+        id: 'helios',
+        name: '헬리오스',
+        role: 'Mage',
+        faction: 'Honor',
+        avatar: '☀️',
+        color: '#f59e0b',
+        stats: { hp: 630000, armor: 17000, magicDef: 30000, physAtk: 0, magicAtk: 205000, physPen: 0, magicPen: 25000, mainStat: 14200 },
+        artifactWeapon: 'Armor_Buff',
+        tags: ['Honor', 'Anti_Crit', 'Magic_DPS', 'Flaming_Orb'],
+        desc: '아군이 적의 치명타를 타깃 피격당할 때 마다 마법 태양 구체로 즉사 반격.',
+        relicSkills: { lvl1: '태양 구체 반격', lvl10: '치명타 반격 딜 2배', lvl20: '마법 보호막 생성', lvl30: '태양 구체 수 4개 확대' },
+        counters: { hardAgainst: ['Buff_Crit', 'yasmine', 'artemis', 'ginger', 'keira'], vulnerableTo: ['isaac'] }
+      },
+      {
+        id: 'artemis',
+        name: '아르테미스',
+        role: 'Marksman',
+        faction: 'Honor',
+        avatar: '🏹',
+        color: '#f59e0b',
+        stats: { hp: 560000, armor: 13000, magicDef: 14000, physAtk: 205000, magicAtk: 0, physPen: 34000, magicPen: 0, mainStat: 14900 },
+        artifactWeapon: 'Phys_Atk_Buff',
+        tags: ['Physical_DPS', 'Honor', 'Crit_Rain', 'Stun'],
+        desc: '명예 아군과 세바스찬의 치명타 버프를 받아 화살 소나기로 전장을 초토화.',
+        relicSkills: { lvl1: '치명타 화살 소나기', lvl10: '화살 수 +5발', lvl20: '치명타율 +30%', lvl30: '기절 효과 추가' },
+        counters: { hardAgainst: ['squishy_teams'], vulnerableTo: ['helios', 'corvus'] }
+      },
+      {
+        id: 'fafnir',
+        name: '파프니르',
+        role: 'Support',
+        faction: 'Honor',
+        avatar: '🔨',
+        color: '#f59e0b',
+        stats: { hp: 790000, armor: 25000, magicDef: 22000, physAtk: 160000, magicAtk: 0, physPen: 0, magicPen: 0, mainStat: 13900 },
+        artifactWeapon: 'Phys_Atk_Buff',
+        tags: ['Honor', 'Rune_Shield', 'Buff_Agility', 'Stun'],
+        desc: '메인 민첩 딜러에게 영구 방패를 씌우고 물리 공격력을 폭발적으로 상향.',
+        relicSkills: { lvl1: '드워프의 망치 방패', lvl10: '방패 무적 지속 연장', lvl20: '물리 딜러 공 +50%', lvl30: '망치 강타 광역 기절' },
+        counters: { hardAgainst: ['burst_assassins'], vulnerableTo: ['iris'] }
+      },
+      {
+        id: 'luther',
+        name: '루터',
+        role: 'Tank',
+        faction: 'Honor',
+        avatar: '✝️',
+        color: '#f59e0b',
+        stats: { hp: 1080000, armor: 34000, magicDef: 20000, physAtk: 44000, magicAtk: 0, physPen: 0, magicPen: 0, mainStat: 15600 },
+        artifactWeapon: 'Magic_Def_Buff',
+        tags: ['Honor', 'Backline_Jump', 'Stun', 'Taunt'],
+        desc: '적 진영 한복판으로 껑충 점프해 들어가 어그로를 도발 끌고 진형을 무너뜨림.',
+        relicSkills: { lvl1: '성스러운 결의 도약', lvl10: '도약 시 방어력 2배', lvl20: '광역 도발 도트 딜', lvl30: '도발 적 에너지 금지' },
+        counters: { hardAgainst: ['clumped_backline'], vulnerableTo: ['folio', 'celeste'] }
+      },
+      {
+        id: 'yasmine',
+        name: '야스민',
+        role: 'Warrior',
+        faction: 'Honor',
+        avatar: '🗡️',
+        color: '#f59e0b',
+        stats: { hp: 610000, armor: 18000, magicDef: 15000, physAtk: 198000, magicAtk: 0, physPen: 33000, magicPen: 0, mainStat: 14700 },
+        artifactWeapon: 'Crit_Chance_Buff',
+        tags: ['Physical_DPS', 'Honor', 'Backline_Diver', 'Poison', 'Buff_Crit'],
+        desc: '방어력이 가장 낮은 적의 뒤로 습격해 치명타 맹독을 퍼붓는 유독성 암살자.',
+        relicSkills: { lvl1: '독사 습격 맹독', lvl10: '독 피해 +40%', lvl20: '디버프 면역', lvl30: '독살 즉사 확률' },
+        counters: { hardAgainst: ['squishy_backline'], vulnerableTo: ['helios', 'corvus'] }
+      }
+    ];
+
+    // PRESET TEAMS
+    const PRESETS = {
+      mystery_folio: {
+        name: '신비 폴리오 폭딜 덱',
+        my: ['julius', 'folio', 'celeste', 'jorgen', 'satori'],
+        enemy: ['corvus', 'morrigan', 'iris', 'faceless', 'octavia']
+      },
+      progress: {
+        name: '진보 쉴드 덱',
+        my: ['julius', 'judge', 'isaac', 'ginger', 'orion'],
+        enemy: ['astaroth', 'kayla', 'aidan', 'celeste', 'jorgen']
+      },
+      honor: {
+        name: '명예 치명타 덱',
+        my: ['luther', 'tristan', 'sebastian', 'artemis', 'fafnir'],
+        enemy: ['corvus', 'morrigan', 'iris', 'faceless', 'octavia']
+      },
+      chaos: {
+        name: '혼돈 연소 덱',
+        my: ['cleaver', 'kayla', 'aidan', 'peppy', 'astaroth'],
+        enemy: ['julius', 'judge', 'isaac', 'ginger', 'orion']
+      },
+      eternity: {
+        name: '영원 언데드 회피 덱',
+        my: ['corvus', 'morrigan', 'iris', 'faceless', 'octavia'],
+        enemy: ['tristan', 'sebastian', 'artemis', 'helios', 'luther']
+      },
+      nature: {
+        name: '자연 룬 흡혈 덱',
+        my: ['mush_shroom', 'alvanor', 'mojo', 'chabba', 'celeste'],
+        enemy: ['astaroth', 'kayla', 'aidan', 'cleaver', 'peppy']
+      }
+    };
+
+    // APP STATE
+    let myTeam = [];      // Array of objects: { hero, relicLvl: 0|1|10|20|30, stoneSkin: boolean }
+    let enemyTeam = [];   // Array of objects: { hero, relicLvl: 0|1|10|20|30, stoneSkin: boolean }
+    let selectTarget = 'my';
+    let currentRoleFilter = 'ALL';
+    let currentFactionFilter = 'ALL';
+
+    // ==========================================
+    // 2. INITIALIZATION & EVENTS
+    // ==========================================
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderTeamSlots();
+      renderHeroGrid();
+      runSimulation();
+    });
+
+    function setSelectTarget(target) {
+      selectTarget = target;
+      const myBtn = document.getElementById('target-my-btn');
+      const enemyBtn = document.getElementById('target-enemy-btn');
+
+      if (target === 'my') {
+        myBtn.className = 'text-xs px-3 py-1 rounded-lg font-medium transition flex items-center gap-1 border bg-blue-600 text-white border-blue-400 shadow-sm';
+        myBtn.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> 선택 중`;
+        enemyBtn.className = 'text-xs px-3 py-1 rounded-lg font-medium transition flex items-center gap-1 border bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600';
+        enemyBtn.innerHTML = `선택하기`;
+      } else {
+        enemyBtn.className = 'text-xs px-3 py-1 rounded-lg font-medium transition flex items-center gap-1 border bg-red-600 text-white border-red-400 shadow-sm';
+        enemyBtn.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> 선택 중`;
+        myBtn.className = 'text-xs px-3 py-1 rounded-lg font-medium transition flex items-center gap-1 border bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-600';
+        myBtn.innerHTML = `선택하기`;
+      }
+      lucide.createIcons();
+    }
+
+    // ==========================================
+    // 3. RENDER SLOTS & CONTROLS (RELIC + STONE SKIN)
+    // ==========================================
+    function renderTeamSlots() {
+      const myContainer = document.getElementById('my-team-slots');
+      const enemyContainer = document.getElementById('enemy-team-slots');
+
+      myContainer.innerHTML = '';
+      enemyContainer.innerHTML = '';
+
+      for (let i = 0; i < 5; i++) {
+        myContainer.appendChild(createSlotElement(myTeam[i], i, 'my'));
+        enemyContainer.appendChild(createSlotElement(enemyTeam[i], i, 'enemy'));
+      }
+
+      document.getElementById('my-team-count').innerText = `${myTeam.length}/5`;
+      document.getElementById('enemy-team-count').innerText = `${enemyTeam.length}/5`;
+
+      renderFactionBadges();
+      lucide.createIcons();
+    }
+
+    function createSlotElement(slotData, index, type) {
+      const slot = document.createElement('div');
+      const isMy = type === 'my';
+      const borderColor = isMy ? 'border-blue-500/40' : 'border-red-500/40';
+
+      if (!slotData) {
+        slot.className = `h-32 rounded-xl border-2 border-dashed border-slate-800 bg-slate-950/40 flex flex-col items-center justify-center text-slate-600 transition hover:border-slate-700 cursor-pointer group`;
+        slot.onclick = () => setSelectTarget(type);
+        slot.innerHTML = `
+          <i data-lucide="plus" class="w-5 h-5 group-hover:scale-110 transition"></i>
+          <span class="text-[10px] mt-1 font-semibold">슬롯 ${index + 1}</span>
+        `;
+      } else {
+        const hero = slotData.hero;
+        const relicLvl = slotData.relicLvl;
+        const stoneSkin = slotData.stoneSkin;
+
+        const relicBadgeClass = relicLvl === 30 ? 'text-amber-300 border-amber-500/60 bg-amber-950/70' : (relicLvl > 0 ? 'text-purple-300 border-purple-500/50 bg-purple-950/50' : 'text-slate-400 border-slate-700 bg-slate-900');
+
+        slot.className = `h-32 rounded-xl border ${borderColor} bg-slate-900/90 relative overflow-hidden flex flex-col items-center justify-between p-1.5 shadow-md hero-card cursor-pointer group`;
+        slot.innerHTML = `
+          <!-- Delete button -->
+          <button onclick="event.stopPropagation(); removeHero('${type}', ${index})" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-slate-950/90 text-slate-400 hover:text-red-400 flex items-center justify-center z-10">
+            <i data-lucide="x" class="w-3 h-3"></i>
+          </button>
+          
+          <div class="text-2xl mt-0.5">${hero.avatar}</div>
+          <div class="text-center w-full px-0.5">
+            <div class="text-[11px] font-bold text-slate-100 truncate">${hero.name}</div>
+            <div class="text-[9px] text-slate-400 truncate">${hero.role}</div>
+          </div>
+
+          <!-- Controls Container -->
+          <div class="w-full space-y-1" onclick="event.stopPropagation();">
+            <!-- Relic Selector -->
+            <div class="flex items-center justify-between px-1 py-0.5 rounded border text-[9px] font-bold ${relicBadgeClass}">
+              <span>유물</span>
+              <select onchange="changeRelicLevel('${type}', ${index}, this.value)" class="bg-transparent text-[9px] font-extrabold focus:outline-none cursor-pointer">
+                <option value="0" ${relicLvl === 0 ? 'selected' : ''} class="bg-slate-900 text-slate-300">0 Lv</option>
+                <option value="1" ${relicLvl === 1 ? 'selected' : ''} class="bg-slate-900 text-slate-300">1 Lv</option>
+                <option value="10" ${relicLvl === 10 ? 'selected' : ''} class="bg-slate-900 text-purple-300">10 Lv</option>
+                <option value="20" ${relicLvl === 20 ? 'selected' : ''} class="bg-slate-900 text-purple-300">20 Lv</option>
+                <option value="30" ${relicLvl === 30 ? 'selected' : ''} class="bg-slate-900 text-amber-300">30 Lv (풀강)</option>
+              </select>
+            </div>
+
+            <!-- Stone Skin Toggle -->
+            <button onclick="toggleStoneSkin('${type}', ${index})" class="w-full flex items-center justify-between px-1 py-0.5 rounded border text-[9px] font-bold transition ${stoneSkin ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/60' : 'bg-slate-950/60 text-slate-500 border-slate-800'}">
+              <span>스톤스킨</span>
+              <span class="text-[8px] font-black px-1 rounded ${stoneSkin ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800 text-slate-400'}">${stoneSkin ? 'ON' : 'OFF'}</span>
+            </button>
+          </div>
+          
+          <div class="w-full h-1 rounded-full mt-0.5" style="background-color: ${hero.color}"></div>
+        `;
+        slot.onclick = () => openHeroModal(hero.id);
+      }
+      return slot;
+    }
+
+    function changeRelicLevel(type, index, value) {
+      const lvl = parseInt(value, 10);
+      if (type === 'my' && myTeam[index]) myTeam[index].relicLvl = lvl;
+      else if (type === 'enemy' && enemyTeam[index]) enemyTeam[index].relicLvl = lvl;
+      renderTeamSlots();
+      runSimulation();
+    }
+
+    function toggleStoneSkin(type, index) {
+      if (type === 'my' && myTeam[index]) myTeam[index].stoneSkin = !myTeam[index].stoneSkin;
+      else if (type === 'enemy' && enemyTeam[index]) enemyTeam[index].stoneSkin = !enemyTeam[index].stoneSkin;
+      renderTeamSlots();
+      runSimulation();
+    }
+
+    function renderFactionBadges() {
+      const mySummary = document.getElementById('my-faction-summary');
+      const enemySummary = document.getElementById('enemy-faction-summary');
+
+      mySummary.innerHTML = generateFactionHTML(myTeam.map(t => t.hero));
+      enemySummary.innerHTML = generateFactionHTML(enemyTeam.map(t => t.hero));
+    }
+
+    function generateFactionHTML(team) {
+      if (team.length === 0) return `<span class="text-slate-500 italic text-[11px]">영웅을 배치하세요.</span>`;
+      const counts = {};
+      team.forEach(h => counts[h.faction] = (counts[h.faction] || 0) + 1);
+
+      return Object.entries(counts).map(([faction, count]) => {
+        let nameMap = { Progress: '진보', Chaos: '혼돈', Nature: '자연', Honor: '명예', Eternity: '영원', Mystery: '신비' };
+        let colorMap = { Progress: 'cyan', Chaos: 'red', Nature: 'emerald', Honor: 'amber', Eternity: 'purple', Mystery: 'pink' };
+        let c = colorMap[faction] || 'slate';
+        return `<span class="bg-${c}-950/80 text-${c}-400 border border-${c}-500/30 px-2 py-0.5 rounded-md font-semibold text-[10px]">${nameMap[faction]} x${count}</span>`;
+      }).join('');
+    }
+
+    // ==========================================
+    // 4. HERO PICKER GRID & FILTERS
+    // ==========================================
+    function renderHeroGrid() {
+      const grid = document.getElementById('hero-grid');
+      const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+
+      grid.innerHTML = '';
+
+      const filtered = HEROES_DB.filter(hero => {
+        const matchesSearch = hero.name.toLowerCase().includes(searchTerm) || hero.role.toLowerCase().includes(searchTerm);
+        const matchesRole = currentRoleFilter === 'ALL' || hero.role === currentRoleFilter;
+        const matchesFaction = currentFactionFilter === 'ALL' || hero.faction === currentFactionFilter;
+        return matchesSearch && matchesRole && matchesFaction;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full py-8 text-center text-slate-500 text-xs">검색 조건에 일치하는 영웅이 없습니다.</div>`;
+        return;
+      }
+
+      filtered.forEach(hero => {
+        const inMyTeam = myTeam.some(t => t.hero.id === hero.id);
+        const inEnemyTeam = enemyTeam.some(t => t.hero.id === hero.id);
+        const isSelected = inMyTeam || inEnemyTeam;
+
+        const card = document.createElement('div');
+        card.className = `hero-card p-3 rounded-xl border ${isSelected ? 'border-amber-500/80 bg-slate-800/90' : 'border-slate-800 bg-slate-950/80 hover:border-slate-700'} relative flex flex-col items-center text-center cursor-pointer group`;
+
+        card.innerHTML = `
+          ${inMyTeam ? `<span class="absolute top-1.5 left-1.5 bg-blue-500 text-slate-950 font-black text-[9px] px-1.5 py-0.2 rounded">아군</span>` : ''}
+          ${inEnemyTeam ? `<span class="absolute top-1.5 left-1.5 bg-red-500 text-white font-black text-[9px] px-1.5 py-0.2 rounded">적군</span>` : ''}
+
+          <button onclick="event.stopPropagation(); openHeroModal('${hero.id}')" class="absolute top-1.5 right-1.5 text-slate-500 hover:text-slate-200">
+            <i data-lucide="info" class="w-3.5 h-3.5"></i>
+          </button>
+
+          <div class="text-3xl my-1 group-hover:scale-110 transition">${hero.avatar}</div>
+          <div class="text-xs font-bold text-slate-100 truncate w-full px-1">${hero.name}</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">${hero.role}</div>
+
+          <div class="mt-2 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full" style="background-color: ${hero.color}"></span>
+            <span class="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">${hero.faction}</span>
+          </div>
+        `;
+
+        card.onclick = () => handleHeroClick(hero);
+        grid.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    // ==========================================
+    // 5. ACTION HANDLERS
+    // ==========================================
+    function handleHeroClick(hero) {
+      if (selectTarget === 'my') {
+        const idx = myTeam.findIndex(t => t.hero.id === hero.id);
+        if (idx >= 0) {
+          myTeam.splice(idx, 1);
+        } else {
+          if (myTeam.length >= 5) {
+            alert('아군 팀은 최대 5명까지 배치 가능합니다.');
+            return;
+          }
+          enemyTeam = enemyTeam.filter(t => t.hero.id !== hero.id);
+          myTeam.push({ hero: hero, relicLvl: 30, stoneSkin: true });
+        }
+      } else {
+        const idx = enemyTeam.findIndex(t => t.hero.id === hero.id);
+        if (idx >= 0) {
+          enemyTeam.splice(idx, 1);
+        } else {
+          if (enemyTeam.length >= 5) {
+            alert('상대 팀은 최대 5명까지 배치 가능합니다.');
+            return;
+          }
+          myTeam = myTeam.filter(t => t.hero.id !== hero.id);
+          enemyTeam.push({ hero: hero, relicLvl: 30, stoneSkin: true });
+        }
+      }
+
+      renderTeamSlots();
+      renderHeroGrid();
+      runSimulation();
+    }
+
+    function removeHero(type, index) {
+      if (type === 'my') myTeam.splice(index, 1);
+      else enemyTeam.splice(index, 1);
+      renderTeamSlots();
+      renderHeroGrid();
+      runSimulation();
+    }
+
+    function resetAllTeams() {
+      myTeam = [];
+      enemyTeam = [];
+      renderTeamSlots();
+      renderHeroGrid();
+      runSimulation();
+    }
+
+    function loadPreset(presetKey) {
+      const preset = PRESETS[presetKey];
+      if (!preset) return;
+
+      myTeam = preset.my.map(id => ({ hero: HEROES_DB.find(h => h.id === id), relicLvl: 30, stoneSkin: true })).filter(t => t.hero);
+      enemyTeam = preset.enemy.map(id => ({ hero: HEROES_DB.find(h => h.id === id), relicLvl: 30, stoneSkin: true })).filter(t => t.hero);
+
+      renderTeamSlots();
+      renderHeroGrid();
+      runSimulation();
+    }
+
+    function setRoleFilter(role) {
+      currentRoleFilter = role;
+      document.querySelectorAll('.role-filter-btn').forEach(btn => {
+        if (btn.innerText.includes(role === 'ALL' ? '전체' : role)) {
+          btn.className = 'role-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-700 bg-amber-500 text-slate-950 font-bold';
+        } else {
+          btn.className = 'role-filter-btn px-2.5 py-1 text-xs rounded-lg border border-slate-800 bg-slate-950 text-slate-300 hover:bg-slate-800';
+        }
+      });
+      renderHeroGrid();
+    }
+
+    function setFactionFilter(faction) {
+      currentFactionFilter = faction;
+      renderHeroGrid();
+    }
+
+    // ==========================================
+    // 6. ENGINE SIMULATION MATH ENGINE (RELIC + SKIN + PENETRATION)
+    // ==========================================
+    function runSimulation() {
+      let synergyScore = 0;
+      let relicSkinScore = 0;
+      let counterScore = 0;
+      let penRate = 0;
+
+      const synergyLogs = [];
+      const counterLogs = [];
+
+      const myHeroes = myTeam.map(t => t.hero);
+      const enemyHeroes = enemyTeam.map(t => t.hero);
+
+      const myIds = myHeroes.map(h => h.id);
+      const enemyIds = enemyHeroes.map(h => h.id);
+      const myTags = myHeroes.flatMap(h => h.tags);
+      const enemyTags = enemyHeroes.flatMap(h => h.tags);
+
+      // 1. FACTION RESONANCE
+      const factionCounts = {};
+      myHeroes.forEach(h => factionCounts[h.faction] = (factionCounts[h.faction] || 0) + 1);
+      Object.entries(factionCounts).forEach(([faction, count]) => {
+        let fName = { Progress: '진보', Chaos: '혼돈', Nature: '자연', Honor: '명예', Eternity: '영원', Mystery: '신비' }[faction];
+        if (count >= 4) {
+          synergyScore += 40;
+          synergyLogs.push(`✨ <b>[${fName} 순혈 공명]</b> 동일 진영 ${count}명 전격 결속 (+40 Pts)`);
+        } else if (count === 3) {
+          synergyScore += 25;
+          synergyLogs.push(`✨ <b>[${fName} 진영 공명]</b> 동일 진영 ${count}명 시너지 발동 (+25 Pts)`);
+        } else if (count === 2) {
+          synergyScore += 10;
+        }
+      });
+
+      // 2. RELIC & STONE SKIN POWER MATH
+      myTeam.forEach(item => {
+        if (item.relicLvl === 30) {
+          relicSkinScore += 15;
+          synergyLogs.push(`🔥 <b>[${item.hero.name}] 전설 유물 30Lv:</b> 고유 패시브 (${item.hero.relicSkills.lvl30}) 해금 (+15 Pts)`);
+        } else if (item.relicLvl >= 10) {
+          relicSkinScore += 5;
+        }
+
+        if (item.stoneSkin) {
+          relicSkinScore += 8;
+        }
+      });
+
+      // 3. SPECIAL HERO COMBOS
+      if (myIds.includes('kayla') && myIds.includes('aidan')) {
+        synergyScore += 35;
+        synergyLogs.push(`❤️ <b>[영혼 결속]</b> 케일라 & 에이단 체력 링킹 및 무한 영혼 치유 (+35 Pts)`);
+      }
+      if (myIds.includes('cleaver') && myIds.includes('peppy')) {
+        synergyScore += 25;
+        synergyLogs.push(`🥩 <b>[클리버 & 페피]</b> 후열 사슬 끌기 + 반사 기절 콤보 (+25 Pts)`);
+      }
+      if (myIds.includes('tristan') && myIds.includes('sebastian') && (myIds.includes('artemis') || myIds.includes('yasmine'))) {
+        synergyScore += 30;
+        synergyLogs.push(`⚔️ <b>[명예 물리 폭딜 라인]</b> 관통 + 치명타 증폭 조합 (+30 Pts)`);
+      }
+      if (myIds.includes('folio') && myTags.includes('Mystery')) {
+        synergyScore += 25;
+        synergyLogs.push(`📖 <b>[폴리오 신비 공명]</b> 분신 흡수력 및 팀 에너지 수급 펌핑 (+25 Pts)`);
+      }
+      if (myIds.includes('corvus') && myIds.includes('morrigan') && myIds.includes('octavia')) {
+        synergyScore += 30;
+        synergyLogs.push(`👑 <b>[영원 언데드 라인]</b> 제단 반사 + 부활 금지 + 회피 반격 (+30 Pts)`);
+      }
+
+      if (synergyLogs.length === 0 && myTeam.length > 0) {
+        synergyLogs.push(`일반 직업군 조합이 기본 유지 중입니다.`);
+      }
+
+      // 4. HARD & SOFT COUNTER MATRIX
+      // Isaac vs Magic
+      if (enemyTags.includes('Magic_DPS') && myIds.includes('isaac')) {
+        const isaacRelic = myTeam.find(t => t.hero.id === 'isaac')?.relicLvl || 0;
+        const bonus = isaacRelic >= 20 ? 45 : 30;
+        counterScore += bonus;
+        counterLogs.push(`🟢 <b>[아이작 하드 카운터]</b> 상대 마법 딜러 드론 흡수 및 광역 침묵 (+${bonus} Pts)`);
+      }
+      // Helios vs Crit
+      if (enemyTags.includes('Buff_Crit') && myIds.includes('helios')) {
+        counterScore += 40;
+        counterLogs.push(`🟢 <b>[헬리오스 태양 반격]</b> 상대 치명타 공격 피격 시 즉사급 태양 구체 반격 (+40 Pts)`);
+      }
+      // Morrigan vs Resurrect
+      if (enemyTags.includes('Resurrect') && myIds.includes('morrigan')) {
+        counterScore += 35;
+        counterLogs.push(`🟢 <b>[모리간 부활 봉인]</b> 상대 부활 기믹 완전 차단 무효화 (+35 Pts)`);
+      }
+      // Celeste vs Anti-Heal
+      if (enemyTags.includes('Healer') && myIds.includes('celeste')) {
+        counterScore += 30;
+        counterLogs.push(`🟢 <b>[셀레스티 치유 반전]</b> 상대 힐을 100% 지속 마법 피해로 전환 (+30 Pts)`);
+      }
+      // Iris vs Tanks
+      if (enemyHeroes.some(h => h.role === 'Tank') && myIds.includes('iris')) {
+        counterScore += 30;
+        counterLogs.push(`🟢 <b>[아이리스 영혼 적출]</b> 상대 메인 탱커 방어 무시 파괴 (+30 Pts)`);
+      }
+      // Folio vs Kayla/Luther
+      if ((enemyIds.includes('kayla') || enemyIds.includes('luther')) && myIds.includes('folio')) {
+        counterScore += 25;
+        counterLogs.push(`🟢 <b>[폴리오 2스킬 속박]</b> 카일라/루터의 침투 급습 즉시 억제 (+25 Pts)`);
+      }
+
+      // Risk Warning (Vulnerabilities)
+      if (myTags.includes('Buff_Crit') && enemyIds.includes('helios')) {
+        counterScore -= 35;
+        counterLogs.push(`🔴 <b>[위험] 적 헬리오스:</b> 치명타 피격 시 역반격으로 아군 전멸 위험 (-35 Pts)`);
+      }
+      if (myTags.includes('Magic_DPS') && enemyIds.includes('isaac')) {
+        counterScore -= 35;
+        counterLogs.push(`🔴 <b>[위험] 적 아이작:</b> 마법 딜이 통째로 드론 보호막으로 흡수당함 (-35 Pts)`);
+      }
+      if (myTags.includes('Resurrect') && enemyIds.includes('morrigan')) {
+        counterScore -= 30;
+        counterLogs.push(`🔴 <b>[위험] 적 모리간:</b> 아군 부활 스킬 사용 불가능 (-30 Pts)`);
+      }
+
+      if (counterLogs.length === 0 && enemyTeam.length > 0) {
+        counterLogs.push(`상대 덱과의 특이 하드 카운터 요소가 감지되지 않았습니다.`);
+      }
+
+      // 5. STAT PENETRATION MATH INCLUDING STONE SKIN
+      let totalMyPhysPen = myHeroes.reduce((acc, h) => acc + h.stats.physPen, 0);
+      let totalMyMagicPen = myHeroes.reduce((acc, h) => acc + h.stats.magicPen, 0);
+
+      // Effective enemy defense calculation considering Stone Skin (+15,000 Armor/MagicDef)
+      let totalEnemyArmor = enemyTeam.reduce((acc, item) => acc + item.hero.stats.armor + (item.stoneSkin ? 15000 : 0), 0);
+      let totalEnemyMDef = enemyTeam.reduce((acc, item) => acc + item.hero.stats.magicDef + (item.stoneSkin ? 15000 : 0), 0);
+
+      let totalMyPen = totalMyPhysPen + totalMyMagicPen;
+      let totalEnemyDef = totalEnemyArmor + totalEnemyMDef;
+
+      if (totalEnemyDef > 0) {
+        penRate = Math.min(Math.round((totalMyPen / totalEnemyDef) * 100), 100);
+      } else {
+        penRate = 50;
+      }
+
+      // 6. WIN RATE CALCULATION
+      let baseWinRate = 50;
+      if (myTeam.length > 0 || enemyTeam.length > 0) {
+        baseWinRate += (synergyScore * 0.25) + (relicSkinScore * 0.2) + (counterScore * 0.35) + ((penRate - 30) * 0.2);
+        baseWinRate = Math.min(Math.max(Math.round(baseWinRate), 5), 98);
+      }
+
+      // 7. DASHBOARD UI UPDATES
+      document.getElementById('score-synergy').innerText = `${synergyScore} Pts`;
+      document.getElementById('bar-synergy').style.width = `${Math.min(synergyScore, 100)}%`;
+
+      document.getElementById('score-relic').innerText = `${relicSkinScore} Pts`;
+      document.getElementById('bar-relic').style.width = `${Math.min(relicSkinScore, 100)}%`;
+
+      document.getElementById('score-counter').innerText = `${counterScore >= 0 ? '+' : ''}${counterScore} Pts`;
+      document.getElementById('bar-counter').style.width = `${Math.min(Math.max(50 + counterScore, 5), 100)}%`;
+
+      document.getElementById('score-pen').innerText = `${penRate}%`;
+      document.getElementById('bar-pen').style.width = `${penRate}%`;
+
+      document.getElementById('win-rate-text').innerText = `${baseWinRate}%`;
+
+      const synList = document.getElementById('log-synergy-list');
+      synList.innerHTML = synergyLogs.map(l => `<li class="flex items-start gap-1"><span>•</span> <span>${l}</span></li>`).join('');
+
+      const counterList = document.getElementById('log-counter-list');
+      counterList.innerHTML = counterLogs.map(l => `<li class="flex items-start gap-1"><span>•</span> <span>${l}</span></li>`).join('');
+    }
+
+    // ==========================================
+    // 7. HERO DETAILS MODAL
+    // ==========================================
+    function openHeroModal(heroId) {
+      const hero = HEROES_DB.find(h => h.id === heroId);
+      if (!hero) return;
+
+      const modal = document.getElementById('hero-modal');
+      const container = document.getElementById('modal-hero-details');
+
+      container.innerHTML = `
+        <div class="flex items-center gap-4 border-b border-slate-800 pb-4 mb-4">
+          <div class="text-4xl p-2 bg-slate-800 rounded-xl border border-slate-700">${hero.avatar}</div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-lg font-bold text-slate-100">${hero.name}</h3>
+              <span class="text-xs px-2 py-0.5 rounded font-semibold text-slate-950" style="background-color: ${hero.color}">${hero.faction}</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5">${hero.role} | 무기 유물: ${hero.artifactWeapon}</p>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-300 leading-relaxed mb-4">${hero.desc}</p>
+
+        <!-- Relic Skills 0-30 breakdown -->
+        <div class="bg-slate-950 p-3 rounded-xl border border-amber-500/30 mb-4 space-y-1.5 text-xs">
+          <div class="text-amber-400 font-bold mb-1 flex items-center gap-1"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 전설 유물(Relic) 강화 단계</div>
+          <div><span class="text-slate-400 font-semibold">1 Lv:</span> ${hero.relicSkills.lvl1}</div>
+          <div><span class="text-slate-400 font-semibold">10 Lv:</span> ${hero.relicSkills.lvl10}</div>
+          <div><span class="text-slate-400 font-semibold">20 Lv:</span> ${hero.relicSkills.lvl20}</div>
+          <div><span class="text-amber-300 font-semibold">30 Lv:</span> ${hero.relicSkills.lvl30}</div>
+        </div>
+
+        <!-- Base Stats Grid -->
+        <div class="grid grid-cols-2 gap-2 bg-slate-950 p-3 rounded-xl text-xs mb-4 border border-slate-800">
+          <div><span class="text-slate-500">체력 (HP):</span> <b class="text-slate-200">${hero.stats.hp.toLocaleString()}</b></div>
+          <div><span class="text-slate-500">주 스탯:</span> <b class="text-amber-300">${hero.stats.mainStat.toLocaleString()}</b></div>
+          <div><span class="text-slate-500">물리 방어:</span> <b class="text-slate-200">${hero.stats.armor.toLocaleString()}</b></div>
+          <div><span class="text-slate-500">마법 방어:</span> <b class="text-slate-200">${hero.stats.magicDef.toLocaleString()}</b></div>
+          <div><span class="text-slate-500">물리 관통:</span> <b class="text-amber-400">${hero.stats.physPen.toLocaleString()}</b></div>
+          <div><span class="text-slate-500">마법 관통:</span> <b class="text-purple-400">${hero.stats.magicPen.toLocaleString()}</b></div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      lucide.createIcons();
+    }
+
+    function closeHeroModal() {
+      const modal = document.getElementById('hero-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,2379 @@
+[
+  {
+    "id": "rufus",
+    "name": "루퍼스",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "ziri",
+    "name": "지리",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "amira",
+    "name": "아미라",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "satori",
+    "name": "사토리",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "martha",
+    "name": "마사",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Healer",
+    "roleKo": "힐러",
+    "tags": [
+      "Healer",
+      "Sustain",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "celeste",
+    "name": "셀레스티",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Healer",
+    "roleKo": "힐러",
+    "tags": [
+      "Healer",
+      "Sustain",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "heidi",
+    "name": "하이디",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "andvari",
+    "name": "안드바리",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "lian",
+    "name": "리안",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Control",
+    "roleKo": "제어",
+    "tags": [
+      "Control",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "cascade",
+    "name": "캐스케이드",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "folio",
+    "name": "폴리오",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "somna",
+    "name": "솜나",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "miu",
+    "name": "미우",
+    "faction": "Mystery",
+    "factionKo": "신비의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Mystery"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "isaac",
+    "name": "아이작",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "ginger",
+    "name": "진저",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "fox",
+    "name": "폭스",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "astrid_lucas",
+    "name": "아스트리드 & 루카스",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "arachne",
+    "name": "아라크네",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Control",
+    "roleKo": "제어",
+    "tags": [
+      "Control",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "daredevil",
+    "name": "데어데블",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "sebastian",
+    "name": "세바스찬",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "jet",
+    "name": "제트",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Healer",
+    "roleKo": "힐러",
+    "tags": [
+      "Healer",
+      "Sustain",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "judge",
+    "name": "저지",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "nebula",
+    "name": "네뷸라",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "orion",
+    "name": "오리온",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "julius",
+    "name": "율리우스",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "polaris",
+    "name": "폴라리스",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "eva",
+    "name": "에바",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "lara_croft",
+    "name": "라라 크로프트",
+    "faction": "Progress",
+    "factionKo": "진보의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Progress"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "astaroth",
+    "name": "아스타로트",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "cleaver",
+    "name": "클리버",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "lilith",
+    "name": "릴리스",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "peppy",
+    "name": "페피",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "dorian",
+    "name": "도리언",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Healer",
+    "roleKo": "힐러",
+    "tags": [
+      "Healer",
+      "Sustain",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "xes_ha",
+    "name": "제샤",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "jorgen",
+    "name": "요르겐",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "lars",
+    "name": "라스",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "krista",
+    "name": "크리스타",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "kayla",
+    "name": "케일라",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "aidan",
+    "name": "에이단",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Healer",
+    "roleKo": "힐러",
+    "tags": [
+      "Healer",
+      "Sustain",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "peech",
+    "name": "피치",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "kai",
+    "name": "카이",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "kendle",
+    "name": "켄들",
+    "faction": "Chaos",
+    "factionKo": "혼돈의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Chaos"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "corvus",
+    "name": "코르부스",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "morrigan",
+    "name": "모리간",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Healer",
+    "roleKo": "힐러",
+    "tags": [
+      "Healer",
+      "Sustain",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "keira",
+    "name": "키이라",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "phobos",
+    "name": "포보스",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Control",
+    "roleKo": "제어",
+    "tags": [
+      "Control",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "faceless",
+    "name": "페이스리스",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "karkh",
+    "name": "카르크",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "dante",
+    "name": "단테",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "iris",
+    "name": "아이리스",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "octavia",
+    "name": "옥타비아",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "tempus",
+    "name": "템푸스",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Control",
+    "roleKo": "제어",
+    "tags": [
+      "Control",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "electra_von_grave",
+    "name": "일렉트라 폰 그레이브",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "drayne",
+    "name": "드레인",
+    "faction": "Eternity",
+    "factionKo": "영원의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Eternity"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "aurora",
+    "name": "오로라",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "alvanor",
+    "name": "알바노어",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "dark_star",
+    "name": "다크 스타",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "thea",
+    "name": "테아",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Healer",
+    "roleKo": "힐러",
+    "tags": [
+      "Healer",
+      "Sustain",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "chabba",
+    "name": "차바",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "elmir",
+    "name": "엘미르",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "jhu",
+    "name": "주",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "mojo",
+    "name": "모조",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "yasmine",
+    "name": "야스민",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "mushy_shroom",
+    "name": "머쉬룸 & 룸",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "oya",
+    "name": "오야",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "maya",
+    "name": "마야",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Healer",
+    "roleKo": "힐러",
+    "tags": [
+      "Healer",
+      "Sustain",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "byrna",
+    "name": "비르나",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "leonel",
+    "name": "레오넬",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "wodryn",
+    "name": "워드린",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "tmnt",
+    "name": "십대 돌연변이 닌자 거북이",
+    "faction": "Nature",
+    "factionKo": "자연의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Nature"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "galahad",
+    "name": "갈라하드",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "luther",
+    "name": "루터",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Tank",
+    "roleKo": "탱커",
+    "tags": [
+      "Tank",
+      "Frontline",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "tristan",
+    "name": "트리스탄",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "markus",
+    "name": "마커스",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Healer",
+    "roleKo": "힐러",
+    "tags": [
+      "Healer",
+      "Sustain",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "cornelius",
+    "name": "코르넬리우스",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "helios",
+    "name": "헬리오스",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Mage",
+    "roleKo": "마법 딜러",
+    "tags": [
+      "Magic_DPS",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "artemis",
+    "name": "아르테미스",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Marksman",
+    "roleKo": "사수",
+    "tags": [
+      "Physical_DPS",
+      "Ranged",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "qing_mao",
+    "name": "칭 마오",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "ishmael",
+    "name": "이슈마엘",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Warrior",
+    "roleKo": "전사",
+    "tags": [
+      "Physical_DPS",
+      "Melee",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "fafnir",
+    "name": "파프니르",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Support",
+    "roleKo": "지원",
+    "tags": [
+      "Support",
+      "Utility",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "soleil",
+    "name": "솔레일",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "guus",
+    "name": "구스",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  },
+  {
+    "id": "crow",
+    "name": "크로우",
+    "faction": "Honor",
+    "factionKo": "명예의 길",
+    "role": "Unknown",
+    "roleKo": "확인 필요",
+    "tags": [
+      "Unverified_Role",
+      "Honor"
+    ],
+    "stats": null,
+    "skills": [],
+    "growth": {
+      "level": 0,
+      "rank": "미설정",
+      "stars": 0,
+      "skins": {},
+      "glyphs": {},
+      "artifacts": {
+        "standard": 0,
+        "legendary": 0
+      },
+      "spark": 0
+    },
+    "dataStatus": "목록 확인 필요",
+    "sourceNote": "영웅 목록 초안. 스킬/능력치/성장 수치는 공식 자료 또는 게임 화면 검증 후 입력."
+  }
+]
